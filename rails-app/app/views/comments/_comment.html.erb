@@ -1,0 +1,14 @@
+<%= turbo_frame_tag dom_id(comment), class: "card my-3 shadow-sm" do %>
+  <%= content_tag :div, class: "card-header #{comment.spam? ? "bg-danger" : "bg-primary"} text-white" do %>
+    <div class="">
+      Commented on <%= comment.updated_at.strftime("%B %d, %Y at %l:%M %p") %>
+    </div>
+  <% end %>
+  <%= content_tag :div, class: "card-body #{comment.spam? ? "bg-danger-subtle" : "bg-primary-subtle"}" do %>
+    <p class="card-text"><%= comment.content %></p>
+  <% end %>
+  <div class="card-footer bg-transparent">
+    <%= link_to "Edit", [:edit, comment.post, comment], class: 'btn btn-outline-secondary btn-sm me-2' %>
+    <%= link_to "Delete", [comment.post, comment], "data-turbo-method": :delete, "data-turbo-confirm": "Are you sure?", class: 'btn btn-outline-danger btn-sm' %>
+  </div>
+<% end %>

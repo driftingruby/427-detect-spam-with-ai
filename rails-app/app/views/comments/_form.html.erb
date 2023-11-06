@@ -1,0 +1,11 @@
+<%= turbo_frame_tag dom_id(comment, "form") do %>
+  <%= form_with model: [post, comment] do |form| %>
+    <div class="my-3">
+      <%= form.rich_text_area :content %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+<% end %>
